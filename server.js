@@ -9,19 +9,23 @@ dotenv.config({path: './config/config.env'});
 //Connect to database
 connectDB();
 
-//Route files
-const hospitals = require ('./routes/hospitals');
-const auth = require('./routes/auth');
-
 const app=express();
 
 //add cookie parser
 app.use(cookieParser());
 //Body parser
 app.use(express.json());
+//Query Parser
+//app.set('query parser', 'extended');
+
+//Route files
+const hospitals = require ('./routes/hospitals');
+const auth = require('./routes/auth');
+const appointments = require('./routes/appointments');
 
 app.use('/api/v1/hospitals', hospitals)
 app.use('/api/v1/auth',auth);
+app.use('/api/v1/appointments', appointments);
 
 const PORT=process.env.PORT || 5003;
 const server = app.listen(PORT, console.log('Server running in ', process.env.NODE_ENV, 'mode on port ', PORT));
