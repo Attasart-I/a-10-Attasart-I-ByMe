@@ -36,3 +36,5 @@ console.log(`Error: ${err.message}`);
     //Close server & exit process
     server.close(()=>process.exit(1)); 
 });
+
+// Test copy from Assignment07
